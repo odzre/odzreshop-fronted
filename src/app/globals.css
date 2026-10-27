@@ -1,0 +1,390 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --body-image: url("/nvdstorebgbf.png");
+        --background: 240 6% 10%;
+        --foreground: 0 0% 98%;
+
+        --card: 240 10% 3.9%;
+        --card-foreground: 0 0% 98%;
+
+        --popover: 240 10% 3.9%;
+        --popover-foreground: 0 0% 98%;
+
+        --primary: 0 0% 98%;
+        --primary-foreground: 240 5.9% 10%;
+
+        --secondary: 240 3.7% 15.9%;
+        --secondary-foreground: 0 0% 98%;
+
+        --muted: 240 3.7% 15.9%;
+        --muted-foreground: 240 5% 64.9%;
+
+        --accent: 240 3.7% 15.9%;
+        --accent-foreground: 0 0% 98%;
+
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 0 0% 98%;
+
+        --border: 240 3.7% 15.9%;
+        --input: 240 3.7% 15.9%;
+        --ring: 240 4.9% 83.9%;
+
+        --radius: 0.5rem;
+
+        --my-color-1: 240 10% 3.9%;
+        --my-color-2: 240 10% 3.9%;
+        --my-color-3: 240 10% 3.9%;
+
+        color-scheme: dark;
+    }
+}
+
+@layer base {
+
+
+
+    body {
+        @apply bg-background text-foreground;
+    }
+
+    * {
+        border-color: hsl(var(--border))
+    }
+
+    .bg-gradient {
+        background: var(--body-gradient, hsl(var(--background)));
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+    /* ==================================
+       GLOBAL INPUT RESET
+    ================================== */
+
+    input:not([type="image"], [type="range"], [type="checkbox"], [type="radio"]) {
+        overflow-clip-margin: 0;
+        overflow: clip;
+    }
+
+    input:not([type="file"], [type="checkbox"], [type="radio"]) {
+        appearance: none;
+    }
+
+    input,
+    textarea,
+    select {
+        font: inherit;
+        color: inherit;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+        outline: none;
+    }
+
+
+
+}
+
+@keyframes scrollX {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.scroll-container {
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.animate-scroll {
+    display: flex;
+    width: max-content;
+    animation: scrollX 40s linear infinite;
+    animation-play-state: running;
+}
+
+.scroll-container:hover .animate-scroll {
+    animation-play-state: paused;
+}
+
+.w-square-diagonal {
+    width: 141.42%;
+}
+
+.text-xxs,
+.text-xxs\/4 {
+    font-size: 0.625rem;
+}
+
+.text-xxs\/4 {
+    line-height: 1rem;
+}
+
+.text-xxs\/\[22px\] {
+    font-size: 0.625rem;
+    line-height: 22px;
+}
+
+.bg-title-overlay {
+    background-image: var(--image-overlay);
+}
+
+.bg-flashsale-overlay {
+    background-image: var(--image-flashsale);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bg-footer-image {
+    background-image: var(--image-footer);
+}
+
+.bg-product-overlay {
+    background-image: var(--image-product);
+}
+
+.bg-flashsale-overlay {
+    background-image: var(--image-flashsale);
+}
+
+.bg-popular-overlay {
+    background-image: var(--image-popular);
+}
+
+.hover\:bg-my-color3\/10:hover {
+    background-color: hsl(var(--my-color-3) / 0.1);
+}
+
+.hover\:bg-my-color3\/20:hover {
+    background-color: hsl(var(--my-color-3) / 0.2);
+}
+
+.hover\:bg-my-color3\/30:hover {
+    background-color: hsl(var(--my-color-3) / 0.3);
+}
+
+.hover\:bg-my-color3\/40:hover {
+    background-color: hsl(var(--my-color-3) / 0.4);
+}
+
+.hover\:bg-my-color3\/50:hover {
+    background-color: hsl(var(--my-color-3) / 0.5);
+}
+
+.hover\:bg-my-color3\/60:hover {
+    background-color: hsl(var(--my-color-3) / 0.6);
+}
+
+.hover\:bg-my-color3\/70:hover {
+    background-color: hsl(var(--my-color-3) / 0.7);
+}
+
+.hover\:bg-my-color3\/80:hover {
+    background-color: hsl(var(--my-color-3) / 0.8);
+}
+
+.hover\:bg-my-color3\/90:hover {
+    background-color: hsl(var(--my-color-3) / 0.9);
+}
+
+:root {
+    /* default size (mobile) */
+    --card-height: 288px;
+    --card-width: calc(var(--card-height) / 1.5);
+
+    /* adjust per breakpoint (optional) */
+}
+
+@media (min-width: 640px) {
+    :root {
+        --card-height: 320px;
+        --card-width: calc(var(--card-height) / 1.5);
+    }
+}
+
+@media (min-width: 768px) {
+    :root {
+        --card-height: 360px;
+        --card-width: calc(var(--card-height) / 1.5);
+    }
+}
+
+@media (min-width: 1024px) {
+    :root {
+        --card-height: 400px;
+        --card-width: calc(var(--card-height) / 1.5);
+    }
+}
+
+/* Hover effects */
+.card:hover .wrapper {
+    transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+    box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+    filter: blur(4px);
+}
+
+.wrapper::before,
+.wrapper::after {
+    content: "";
+    opacity: 0;
+    width: 100%;
+    height: 80px;
+    transition: all 0.5s;
+    position: absolute;
+    left: 0;
+}
+
+.wrapper::before {
+    top: 0;
+    height: 100%;
+
+    background-image: linear-gradient(to top,
+            transparent 46%,
+            rgba(12, 13, 19, 0.5) 68%,
+            rgba(12, 13, 19) 97%);
+}
+
+.wrapper::after {
+    bottom: 0;
+    opacity: 1;
+    border-radius: 0.125rem;
+}
+
+.card:hover .wrapper::before,
+.card:hover .wrapper::after {
+    opacity: 1;
+    border-radius: 0.125rem;
+}
+
+.card:hover .wrapper::after {
+    height: 120px;
+}
+
+.card:hover .title {
+    transform: translate3d(0, -40px, 100px);
+}
+
+.card:hover .character {
+    opacity: 1;
+    transform: translate3d(0, -20%, 80px);
+}
+
+#let_it_snow {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.snowflake {
+    position: absolute;
+    color: #fff;
+    pointer-events: none;
+    user-select: none;
+    will-change: top, left, transform;
+    transition: opacity 1s ease-in-out;
+}
+
+@keyframes meteor {
+    0% {
+        transform: rotate(215deg) translateX(0);
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(215deg) translateX(-1000px);
+        opacity: 0;
+    }
+}
+
+.animate-meteor {
+    animation-name: meteor;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.snow-container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.snow-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* ===============================
+   REMOVE NUMBER INPUT SPINNER
+================================ */
+
+/* Chrome, Safari, Edge */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input,
+select,
+textarea {
+    font-size: 16px;
+}
+
+@media (min-width: 768px) {
+
+    input,
+    select,
+    textarea {
+        font-size: 12px;
+    }
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.4s ease;
+}

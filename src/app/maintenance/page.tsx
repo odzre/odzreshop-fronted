@@ -1,0 +1,86 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+
+export default function MaintenancePage() {
+
+    const [message, setMessage] = useState("Website sedang maintenance");
+
+    useEffect(() => {
+        async function loadSettings() {
+            try {
+                const res = await fetch("/api/settings");
+                const data = await res.json();
+
+                const msg = data?.data?.["maintenance.message"];
+
+                if (msg) {
+                    setMessage(msg);
+                }
+
+            } catch (err) {
+                console.error("maintenance message error", err);
+            }
+        }
+
+        loadSettings();
+    }, []);
+
+    return (
+        <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-my-color3/50 text-white">
+
+            {/* TOP WAVE */}
+            <svg
+                width="1024"
+                height="244"
+                viewBox="0 0 1024 244"
+                fill="none"
+                className="absolute right-0 top-0 text-my-color1"
+            >
+                <path
+                    d="M61.5 65C33.1 55.4 8.66667 17.6667 0 0H1024V244C970.833 196.667 847.1 97 777.5 77C690.5 52 97 77 61.5 65Z"
+                    fill="currentColor"
+                />
+            </svg>
+
+            {/* BOTTOM WAVE */}
+            <svg
+                width="1024"
+                height="244"
+                viewBox="0 0 1024 244"
+                fill="none"
+                className="absolute bottom-0 left-0 text-my-color1"
+            >
+                <path
+                    d="M962.5 179C990.9 188.6 1015.33 226.333 1024 244H0V0C53.1667 47.3333 176.9 147 246.5 167C333.5 192 927 167 962.5 179Z"
+                    fill="currentColor"
+                />
+            </svg>
+
+            {/* CONTENT */}
+            <div className="relative z-20 flex flex-col items-center justify-center gap-4 px-4 text-center">
+
+                <div className="h-12 w-12 flex items-center justify-center rounded-full border-4 border-yellow-400">
+                    <span className="text-2xl">🚧</span>
+                </div>
+
+                <h1 className="text-xl font-bold md:text-3xl">
+                    Website Sedang Maintenance
+                </h1>
+
+                <p className="opacity-80 text-sm md:text-base max-w-md">
+                    {message}
+                </p>
+
+                <Button
+                    onClick={() => window.location.reload()}
+                    className="mt-4 font-semibold"
+                >
+                    Refresh Halaman
+                </Button>
+
+            </div>
+        </div>
+    );
+}
